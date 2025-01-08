@@ -15,4 +15,6 @@ This allows us to compress like how png does.</p>
 
 <p>We convert each frame to YUV420 format. Then for each 4 adjacent pixels, we average the chominance this reducing information stored by each pixels to 0.25</p>
 
-references <a> https://github.com/kevmo314/codec-from-scratch </a>
+references 
+1. <a> https://github.com/kevmo314/codec-from-scratch </a>
+2. ffmpeg blogs
