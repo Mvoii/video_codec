@@ -1,3 +1,5 @@
+// incompleted
+
 /**
  * @file video_encoder.c
  * @brief Enhanced video encoder with FFmpeg integration
