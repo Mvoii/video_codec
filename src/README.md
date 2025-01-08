@@ -1,5 +1,5 @@
 ## Codec translated into python
- <p>I have translated the codec into python while maintaining teh same functionality.</p>
+ <p>the codec compresses a video in a encoded.bin file andn then decodes it inro teh decoded.rgb24 file.</p>
 
 Here are the key changes and improvements
 
@@ -20,6 +20,8 @@ For this encoder you need:
 
 1. Python 3.7+
 2. NumPy
+3. zlib
+4. ffmpeg
 
 
 ```
