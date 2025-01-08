@@ -4,7 +4,7 @@
 
 1. The video size should end up smaller after the encoding
 2. The encoding is reversible
-3. The compressed video should contain enogh information to e recongisable
+3. The compressed video should contain enough information to be recongisable
 
 <h3>technique</h3>
 <p>
@@ -14,3 +14,5 @@ This allows us to compress like how png does.</p>
 <p>Each frame contains pixels -which contain three attribuutes: r, g, and b. This gives a total size of (width * height * 3) per frame.</p>
 
 <p>We convert each frame to YUV420 format. Then for each 4 adjacent pixels, we average the chominance this reducing information stored by each pixels to 0.25</p>
+
+references <a> https://github.com/kevmo314/codec-from-scratch </a>
