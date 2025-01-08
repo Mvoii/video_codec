@@ -201,7 +201,7 @@ def main():
     
     # Read input video
     logging.info("Reading input video...")
-    with open('video.rgb24', 'rb') as f:
+    with open('src/video.rgb24', 'rb') as f:
         input_data = f.read()
     
     # Read and encode frames
@@ -209,14 +209,14 @@ def main():
     compressed = encoder.encode_frames(frames)
     
     # Save compressed data
-    with open('encoded.bin', 'wb') as f:
+    with open('src/encoded.bin', 'wb') as f:
         f.write(compressed)
     
     # Decode and save
     decoded_frames = encoder.decode_frames(compressed, len(frames))
     
     # Save decoded video
-    with open('decoded.rgb24', 'wb') as f:
+    with open('src/decoded.rgb24', 'wb') as f:
         for frame in decoded_frames:
             f.write(frame.tobytes())
     
