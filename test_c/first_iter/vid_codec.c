@@ -8,7 +8,7 @@
  * 
  * Return: 0 on success, 1 on failure
  */
-int main(int argc, char *argv)
+int main(int argc, char **argv)
 {
     encoder_context ctx;
     video_frame *frames;

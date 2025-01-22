@@ -1,4 +1,4 @@
-## Codec translated into python
+## Codec in python
  <p>The codec compresses a video in a encoded.bin file andn then decodes it into teh decoded.rgb24 file.</p>
 
 Here are the key features:
