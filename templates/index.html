@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Codec App</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <header>
+        <h1>Video Codec Application</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Compress a Video</h2>
+            <form action="/compress" method="post" enctype="multipart/form-data">
+                <label for="file">Raw Video File (RGB24):</label>
+                <input type="file" name="file" id="file" required><br>
+                <label for="width">Width:</label>
+                <input type="number" name="width" id="width" required><br>
+                <label for="height">Height:</label>
+                <input type="number" name="height" id="height" required><br>
+                <button type="submit">Compress</button>
+            </form>
+        </section>
+        <section>
+            <h2>Decompress a Video</h2>
+            <form action="/decompress" method="post" enctype="multipart/form-data">
+                <label for="file">Compressed Video File (BIN):</label>
+                <input type="file" name="file" id="file" required><br>
+                <label for="width">Width:</label>
+                <input type="number" name="width" id="width" required><br>
+                <label for="height">Height:</label>
+                <input type="number" name="height" id="height" required><br>
+                <label for="num_frames">Number of Frames:</label>
+                <input type="number" name="num_frames" id="num_frames" required><br>
+                <button type="submit">Decompress</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Video Codec Application</p>
+    </footer>
+</body>
+</html>

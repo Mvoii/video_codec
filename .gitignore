@@ -2,3 +2,7 @@
 */decoded*
 */encoded.yuv
 */encoded.bin
+*pyc*
+compressed
+decompressed
+uploads
