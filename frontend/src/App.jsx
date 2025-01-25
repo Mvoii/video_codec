@@ -52,7 +52,7 @@ const VideoCodecApp = () => {
 
     const submitData = new FormData();
     submitData.append('file', fileDetails.file)
-    submitData.append('width', fileDetails.width)
+    submitData.append('width', formData.width)
     submitData.append('height', formData.height);
     if (activeTab === 'decompress') {
       submitData.append('num_frames', formData.num_frames);
