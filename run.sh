@@ -1,12 +1,12 @@
 #!/bin/bash
 # start backend server
 cd backend || exit
-python -m flask run &
+python app.py &
 P1=$!
 
 # start front end server
 cd ../frontend || exit
-npm run dev &
+npm run preview &
 P2=$!
 
 # wait for both processses
