@@ -1,6 +1,6 @@
 # 1. Create project dir and set up backend
-mkdir video_codec_app
-cd video_codec_app
+git clone
+cd video_codec
 
 # 2. create py venv
 python -m venv venv
@@ -10,9 +10,14 @@ source venv/bin/activate
 pip install flask python-magic numpy
 
 # 4. set up react frontend
-npm create vide@latest frontend -- --template react
 cd frontend
 npm install
 
 # 6. install req frontend dependencies
-npm isntall lucide-react @radix-react-alert-dialog tailwindcss postcss autoprefixer @tailwindcss/forms
+npm install lucide-react @radix-react-alert-dialog tailwindcss postcss autoprefixer @tailwindcss/forms
+
+# 7. build
+npm build
+
+# 8. run app
+./run.sh
