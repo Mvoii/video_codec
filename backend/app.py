@@ -14,7 +14,10 @@ DECOMPRESSED_FOLDER = "decompressed"
 ALLOWED_EXTENSIONS = {"rgb24","bin"}
 MAX_FILE_SIZE = 100 * 1024 * 1024 # 100MB
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_folder="static/dist",
+            static_url_path='/')
+
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = MAX_FILE_SIZE
 
@@ -93,9 +96,13 @@ def handle_exception(e):
     logging.error(f"unhandled exception; {str(e)}")
     return jsonify({"success": False, "error": str(e)}), 500
 
-@app.route('/')
-def index():
-    return render_template("index.html")
+@app.route('/', defaults={'path':''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 
 @app.route("/api/compress", methods=["POST"])
