@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { upload, Settings, Film, Download, AlertCircle } from 'lucide-react';
+import { Upload, Settings, Film, Download, AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from './components/ui/alert';
 /* import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -31,7 +31,7 @@ const VideoCodecApp = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormDate(prev => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value
     }));
@@ -64,24 +64,37 @@ const VideoCodecApp = () => {
         body: submitData
       });
 
-      const data = await response.json();
 
-      if (data.success) {
-        // show success woth stats
-        let sucessMessage = activeTab === 'compress'
-        ? `Compression complete! Ratio; ${data.data.compression_ratio}`
-        : `Decompression complete! ${data.data.frame_count} frames processed`;
+      const responseText = await response.text()
+      //const data = await response.json();
+      console.log('Raw response: ', responseText);
 
+      try {
+        const data = JSON.parse(responseText)
+
+        if (data.success) {
+          // show success worth stats
+          let successMessage = activeTab === 'compress'
+          ? `Compression complete! Ratio; ${data.data.compression_ratio}`
+          : `Decompression complete! ${data.data.frame_count} frames processed`;
+
+          setNotification({
+            type: 'success',
+            message: successMessage,
+            data: data.data
+          });
+
+          // Trigger download
+          window.location.href = data.data.download_url;
+        } else {
+          throw new Error(data.error || 'Processing failed');
+        }
+      } catch (jsonError) {
+        console.error("JSON parsing Error: ", jsonError)
         setNotification({
-          type: 'success',
-          message: successMessage,
-          data: data.data
-        });
-
-        // Trigger download
-        window.location.href = data.data.download_url;
-      } else {
-        throw new Error(data.error || 'Processing failed');
+          type: 'error',
+          message: "Failed to parse server response"
+        })
       }
     } catch (error) {
       setNotification({

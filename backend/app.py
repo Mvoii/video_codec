@@ -134,14 +134,17 @@ def compress():
         compressed_size = os.path.getsize(compressed_path)
         compression_ratio = (1 - (compressed_size / original_size)) * 100
 
-        return success_response({
+        response_data = {
             'filename': compressed_filename,
             'original_size': original_size,
-            "comopression_size": compressed_size,
+            "compressed_size": compressed_size,
             'compression_ratio': f"{compression_ratio:.2f}%",
             'frame_count': len(frames),
             'download_url': f'api/download/compressed/{compressed_filename}'
-        })
+        }
+        print("DEBUG compress response: ", response_data)
+        
+        return success_response(response_data)
 
     except VideoProcessingError as e:
         logger.error(f"Video processing error: {str(e)}")
@@ -161,7 +164,7 @@ def decompress():
     try:
         file = request.files['file']
         width = int(request.form["width"])
-        height = int(request.form["heigth"])
+        height = int(request.form["height"])
         num_frames = int(request.form.get("num_frames", 0))
         
         if num_frames <= 0:
