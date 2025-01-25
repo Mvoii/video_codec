@@ -88,6 +88,11 @@ def validate_file_content(file_path, expected_type):
 
     return False
 
+@app.errorhandler(Exception)
+def handle_exception(e):
+    logging.error(f"unhandled exception; {str(e)}")
+    return jsonify({"success": False, "error": str(e)}), 500
+
 @app.route('/')
 def index():
     return render_template("index.html")

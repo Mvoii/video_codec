@@ -64,7 +64,12 @@ const VideoCodecApp = () => {
         body: submitData
       });
 
-
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Server error:", errorText);
+        throw new Error(errorText || "Server request failed");
+      }
+      
       const responseText = await response.text()
       //const data = await response.json();
       console.log('Raw response: ', responseText);
