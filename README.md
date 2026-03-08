@@ -48,3 +48,5 @@ references
 --
 1. <a> https://github.com/kevmo314/codec-from-scratch </a>
 2. ffmpeg blogs
+
+project report available at <a> https://docs.google.com/document/d/1Ts4KwvYIIjozZpmQVGD47qVbS7ldT963W6Kvdp3siQM/edit?usp=sharing </a>
